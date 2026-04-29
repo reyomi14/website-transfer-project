@@ -17,8 +17,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['"Unbounded"', 'sans-serif'],
-        body: ['"Manrope"', 'sans-serif'],
+        heading: ['"Golos Text"', 'sans-serif'],
+        body: ['"Golos Text"', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

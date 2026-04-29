@@ -73,7 +73,7 @@
   h3,
   h4 {
     @apply font-heading;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.035em;
   }
 }
 

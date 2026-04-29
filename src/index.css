@@ -4,41 +4,44 @@
 
 @layer base {
   :root {
-    --background: 60 8% 95%;
-    --foreground: 150 30% 8%;
+    --background: 50 10% 93%;
+    --foreground: 0 0% 7%;
 
     --card: 0 0% 100%;
-    --card-foreground: 150 30% 8%;
+    --card-foreground: 0 0% 7%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 150 30% 8%;
+    --popover-foreground: 0 0% 7%;
 
-    --primary: 150 55% 22%;
-    --primary-foreground: 60 20% 97%;
+    --primary: 152 45% 24%;
+    --primary-foreground: 50 10% 96%;
 
-    --secondary: 60 8% 92%;
-    --secondary-foreground: 150 30% 8%;
+    --secondary: 50 8% 90%;
+    --secondary-foreground: 0 0% 7%;
 
-    --muted: 60 8% 92%;
-    --muted-foreground: 150 8% 40%;
+    --muted: 50 8% 90%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 25 95% 60%;
-    --accent-foreground: 150 30% 8%;
+    --accent: 28 95% 62%;
+    --accent-foreground: 0 0% 7%;
 
-    --destructive: 0 75% 55%;
-    --destructive-foreground: 60 20% 97%;
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 50 10% 96%;
 
-    --border: 60 6% 88%;
-    --input: 60 6% 88%;
-    --ring: 150 55% 22%;
+    --border: 50 6% 86%;
+    --input: 50 6% 86%;
+    --ring: 152 45% 24%;
 
     --radius: 1.5rem;
 
-    --orda-green: 150 55% 22%;
-    --orda-green-deep: 152 60% 16%;
-    --orda-cream: 60 8% 95%;
-    --orda-orange: 25 95% 60%;
-    --orda-orange-soft: 30 100% 92%;
+    --orda-green: 152 45% 24%;
+    --orda-green-deep: 154 50% 17%;
+    --orda-cream: 50 10% 93%;
+    --orda-orange: 28 95% 62%;
+    --orda-orange-soft: 30 100% 93%;
+    --orda-red-soft: 6 100% 95%;
+    --orda-red: 6 75% 60%;
+    --orda-green-soft: 145 50% 92%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;

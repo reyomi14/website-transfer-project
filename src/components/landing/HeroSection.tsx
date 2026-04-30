@@ -74,16 +74,16 @@ const HeroSection = () => {
       {/* HERO */}
       <section className="relative pt-20 pb-24 lg:pt-28 lg:pb-32 overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 pointer-events-none"
+          className="absolute top-0 right-0 bottom-0 w-full lg:w-3/5 bg-cover bg-center bg-no-repeat opacity-60 pointer-events-none"
           style={{
             backgroundImage:
               "url('https://cdn.poehali.dev/projects/b8918883-18ae-4fd9-a195-7aec236008d8/files/06da4aa2-77b9-4377-b5e1-79cb6f63824c.jpg')",
           }}
           aria-hidden
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40 pointer-events-none" aria-hidden />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background pointer-events-none" aria-hidden />
-        <div className="container mx-auto relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/30 pointer-events-none" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background pointer-events-none" aria-hidden />
+        <div className="container mx-auto relative z-10">
           <div className="grid lg:grid-cols-12 gap-10 items-end">
             <div className="lg:col-span-8 reveal">
               <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full border border-border bg-card">

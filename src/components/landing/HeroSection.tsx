@@ -9,17 +9,6 @@ const navItems = [
   { label: "Истории партнеров", href: "#stories" },
 ];
 
-const Stat = ({ value, label }: { value: string; label: string }) => (
-  <div className="rounded-3xl bg-card p-6 hover:bg-[hsl(var(--orda-green))] hover:text-[hsl(var(--orda-cream))] transition-colors duration-500">
-    <div className="font-heading font-bold text-4xl lg:text-5xl tracking-tight leading-none">
-      {value}
-    </div>
-    <div className="mt-3 text-xs uppercase tracking-[0.15em] opacity-70">
-      {label}
-    </div>
-  </div>
-);
-
 const HeroSection = () => {
   return (
     <>
@@ -72,90 +61,69 @@ const HeroSection = () => {
       </header>
 
       {/* HERO */}
-      <section className="relative pt-20 pb-24 lg:pt-28 lg:pb-32 overflow-hidden">
+      <section className="relative overflow-hidden min-h-[80vh] lg:min-h-[88vh] flex items-center">
         <div
-          className="absolute top-0 right-0 bottom-0 w-full lg:w-3/5 bg-cover bg-center bg-no-repeat opacity-60 pointer-events-none"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
           style={{
             backgroundImage:
-              "url('https://cdn.poehali.dev/projects/b8918883-18ae-4fd9-a195-7aec236008d8/files/06da4aa2-77b9-4377-b5e1-79cb6f63824c.jpg')",
+              "url('https://cdn.poehali.dev/projects/b8918883-18ae-4fd9-a195-7aec236008d8/bucket/a9a7d6cb-5b92-4555-a0ec-e18e4f076cf3.png')",
           }}
           aria-hidden
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/30 pointer-events-none" aria-hidden />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background pointer-events-none" aria-hidden />
-        <div className="container mx-auto relative z-10">
-          <div className="grid lg:grid-cols-12 gap-10 items-end">
-            <div className="lg:col-span-8 reveal">
-              <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full border border-border bg-card">
-                <span className="w-2 h-2 rounded-full bg-[hsl(var(--orda-orange))] animate-pulse" />
-                <span className="text-xs font-medium tracking-wide">
-                  Принимаем заявки на 2026 — свободно 42 машино-места
-                </span>
-              </div>
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-transparent pointer-events-none"
+          aria-hidden
+        />
 
-              <h1 className="font-heading font-bold text-[clamp(2.75rem,7vw,6.5rem)] leading-[0.95] tracking-tight text-balance">
-                Грузоперевозки <br />
-                без простоев <br />
-                <span className="text-[hsl(var(--orda-green))] italic font-medium">
-                  и долгов.
-                </span>
-              </h1>
+        <div className="container mx-auto relative z-10 py-20 lg:py-28">
+          <div className="max-w-2xl">
+            <h1 className="font-heading font-bold text-[clamp(2.5rem,6vw,5.5rem)] leading-[1.02] tracking-tight text-balance">
+              Работай на себя.
+              <br />
+              <span className="text-[hsl(var(--orda-green))]">
+                Но не в одиночку.
+              </span>
+            </h1>
 
-              <p className="mt-8 max-w-xl text-lg text-muted-foreground leading-relaxed">
-                Партнёрский парк для владельцев фур. 270+ заказчиков, оплата
-                через 15 дней, скидки до 20% на ДТ. Документы и споры — на нас.
-              </p>
+            <p className="mt-8 max-w-md text-lg lg:text-xl text-foreground/70 leading-relaxed">
+              Стабильные заказы для владельцев фур
+              <br />
+              без поиска клиентов и бумаг
+            </p>
 
-              <div className="mt-10 flex flex-wrap gap-4">
-                <Button
-                  size="lg"
-                  className="rounded-full bg-[hsl(var(--orda-green))] hover:bg-[hsl(var(--orda-green-deep))] text-[hsl(var(--orda-cream))] h-14 px-8 text-base font-medium group"
-                >
-                  Стать партнёром
-                  <Icon
-                    name="ArrowUpRight"
-                    size={18}
-                    className="ml-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-                  />
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="rounded-full h-14 px-8 text-base font-medium border-foreground/20 hover:bg-foreground hover:text-background"
-                >
-                  Посмотреть ставки
-                </Button>
-              </div>
-            </div>
-
-            <div className="lg:col-span-4 reveal" style={{ animationDelay: "0.2s" }}>
-              <div className="grid grid-cols-2 gap-3">
-                <Stat value="270+" label="заказчиков" />
-                <Stat value="15" label="дней до оплаты" />
-                <Stat value="20%" label="скидка на ДТ" />
-                <Stat value="0₽" label="за вступление" />
-              </div>
-            </div>
-          </div>
-
-          {/* Marquee */}
-          <div className="mt-20 -mx-[calc(50vw-50%)] overflow-hidden border-y border-border py-5 bg-[hsl(var(--orda-green))] text-[hsl(var(--orda-cream))]">
-            <div className="flex gap-12 animate-marquee whitespace-nowrap font-heading text-2xl md:text-3xl font-medium">
-              {[...Array(2)].map((_, i) => (
-                <div key={i} className="flex gap-12 items-center">
-                  {["Реф 20т", "•", "Тент 20т", "•", "Изотерм", "•", "Мега-фура", "•", "Сцепка", "•", "Реф 20т", "•", "Тент 20т", "•", "Изотерм", "•", "Мега-фура", "•", "Сцепка", "•"].map(
-                    (w, j) => (
-                      <span key={j} className={w === "•" ? "text-[hsl(var(--orda-orange))]" : ""}>
-                        {w}
-                      </span>
-                    ),
-                  )}
-                </div>
-              ))}
+            <div className="mt-10">
+              <Button
+                size="lg"
+                className="rounded-2xl bg-[hsl(var(--orda-green))] hover:bg-[hsl(var(--orda-green-deep))] text-[hsl(var(--orda-cream))] h-14 px-9 text-base font-semibold group"
+              >
+                Стать партнёром
+                <Icon
+                  name="ArrowRight"
+                  size={18}
+                  className="ml-2 group-hover:translate-x-0.5 transition-transform"
+                />
+              </Button>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Marquee */}
+      <div className="overflow-hidden border-y border-border py-5 bg-[hsl(var(--orda-green))] text-[hsl(var(--orda-cream))]">
+        <div className="flex gap-12 animate-marquee whitespace-nowrap font-heading text-2xl md:text-3xl font-medium">
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="flex gap-12 items-center">
+              {["Реф 20т", "•", "Тент 20т", "•", "Изотерм", "•", "Мега-фура", "•", "Сцепка", "•", "Реф 20т", "•", "Тент 20т", "•", "Изотерм", "•", "Мега-фура", "•", "Сцепка", "•"].map(
+                (w, j) => (
+                  <span key={j} className={w === "•" ? "text-[hsl(var(--orda-orange))]" : ""}>
+                    {w}
+                  </span>
+                ),
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
     </>
   );
 };

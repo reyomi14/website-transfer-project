@@ -1,5 +1,7 @@
+import { useState } from "react";
 import Icon from "@/components/ui/icon";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 import {
   Accordion,
   AccordionContent,
@@ -55,6 +57,22 @@ const stories = [
 ];
 
 const StoriesAndFaqSection = () => {
+  const [ctaPhone, setCtaPhone] = useState("");
+  const [ctaSubmitting, setCtaSubmitting] = useState(false);
+
+  const handleCtaSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (ctaPhone.replace(/\D/g, "").length < 10) {
+      toast.error("Укажите телефон, чтобы мы могли перезвонить");
+      return;
+    }
+    setCtaSubmitting(true);
+    await new Promise((r) => setTimeout(r, 600));
+    setCtaSubmitting(false);
+    setCtaPhone("");
+    toast.success("Заявка принята! Перезвоним за 15 минут.");
+  };
+
   return (
     <>
       {/* STORIES */}
@@ -159,18 +177,29 @@ const StoriesAndFaqSection = () => {
                 </p>
               </div>
 
-              <form className="lg:col-span-5 space-y-3" onSubmit={(e) => e.preventDefault()}>
+              <form className="lg:col-span-5 space-y-3" onSubmit={handleCtaSubmit}>
                 <input
                   type="tel"
+                  required
+                  value={ctaPhone}
+                  onChange={(e) => setCtaPhone(e.target.value)}
                   placeholder="+7 ___ ___ __ __"
-                  className="w-full h-14 px-6 rounded-full bg-[hsl(var(--orda-cream))/0.1] border border-[hsl(var(--orda-cream))/0.2] text-[hsl(var(--orda-cream))] placeholder:text-[hsl(var(--orda-cream))/0.5] focus:outline-none focus:border-[hsl(var(--orda-orange))]"
+                  className="w-full h-14 px-6 rounded-full bg-white/10 border border-white/20 text-[hsl(var(--orda-cream))] placeholder:text-[hsl(var(--orda-cream))]/50 focus:outline-none focus:border-[hsl(var(--orda-orange))] focus:bg-white/15 transition-colors"
                 />
                 <Button
+                  type="submit"
                   size="lg"
-                  className="w-full h-14 rounded-full bg-[hsl(var(--orda-orange))] hover:bg-[hsl(var(--orda-orange))/0.9] text-foreground font-semibold text-base"
+                  disabled={ctaSubmitting}
+                  className="w-full h-14 rounded-full bg-[hsl(var(--orda-orange))] hover:bg-[hsl(var(--orda-orange))]/90 text-foreground font-semibold text-base"
                 >
-                  Получить расчёт
-                  <Icon name="ArrowRight" size={18} className="ml-1" />
+                  {ctaSubmitting ? (
+                    "Отправляем…"
+                  ) : (
+                    <>
+                      Получить расчёт
+                      <Icon name="ArrowRight" size={18} className="ml-1" />
+                    </>
+                  )}
                 </Button>
                 <p className="text-xs opacity-60 text-center">
                   Нажимая кнопку, вы соглашаетесь с обработкой персональных данных

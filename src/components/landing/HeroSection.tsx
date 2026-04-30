@@ -1,5 +1,6 @@
 import Icon from "@/components/ui/icon";
 import { Button } from "@/components/ui/button";
+import LeadDialog from "@/components/landing/LeadDialog";
 
 const navItems = [
   { label: "Для кого", href: "#audience" },
@@ -8,6 +9,11 @@ const navItems = [
   { label: "Вопросы", href: "#faq" },
   { label: "Истории партнеров", href: "#stories" },
 ];
+
+const HERO_DESKTOP =
+  "https://cdn.poehali.dev/projects/b8918883-18ae-4fd9-a195-7aec236008d8/bucket/e28d0981-862d-4ab1-9a7f-5b06b5565920.png";
+const HERO_MOBILE =
+  "https://cdn.poehali.dev/projects/b8918883-18ae-4fd9-a195-7aec236008d8/files/8cb034c4-baba-4e98-a9e5-5465a69796f8.jpg";
 
 const HeroSection = () => {
   return (
@@ -53,31 +59,43 @@ const HeroSection = () => {
             >
               8-923-335-06-10
             </a>
-            <Button className="rounded-full bg-[hsl(var(--orda-green))] hover:bg-[hsl(var(--orda-green-deep))] text-[hsl(var(--orda-cream))] px-5 h-11 font-medium">
-              Оставить заявку
-            </Button>
+            <LeadDialog
+              source="header"
+              trigger={
+                <Button className="rounded-full bg-[hsl(var(--orda-green))] hover:bg-[hsl(var(--orda-green-deep))] text-[hsl(var(--orda-cream))] px-5 h-11 font-medium">
+                  Оставить заявку
+                </Button>
+              }
+            />
           </div>
         </div>
       </header>
 
       {/* HERO */}
-      <section className="relative overflow-hidden min-h-[80vh] lg:min-h-[88vh] flex items-center">
+      <section className="relative overflow-hidden">
+        <picture aria-hidden>
+          <source media="(max-width: 767px)" srcSet={HERO_MOBILE} />
+          <img
+            src={HERO_DESKTOP}
+            alt=""
+            loading="eager"
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+          />
+        </picture>
+
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
-          style={{
-            backgroundImage:
-              "url('https://cdn.poehali.dev/projects/b8918883-18ae-4fd9-a195-7aec236008d8/bucket/a9a7d6cb-5b92-4555-a0ec-e18e4f076cf3.png')",
-          }}
+          className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-transparent pointer-events-none hidden md:block"
           aria-hidden
         />
         <div
-          className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-transparent pointer-events-none"
+          className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/30 to-background pointer-events-none md:hidden"
           aria-hidden
         />
 
-        <div className="container mx-auto relative z-10 py-20 lg:py-28">
+        <div className="container mx-auto relative z-10 min-h-[78vh] md:min-h-[82vh] flex items-center py-20 md:py-24">
           <div className="max-w-2xl">
-            <h1 className="font-heading font-bold text-[clamp(2.5rem,6vw,5.5rem)] leading-[1.02] tracking-tight text-balance">
+            <h1 className="font-heading font-bold text-[clamp(2.5rem,6vw,5.75rem)] leading-[1.02] tracking-tight text-balance">
               Работай на себя.
               <br />
               <span className="text-[hsl(var(--orda-green))]">
@@ -85,45 +103,67 @@ const HeroSection = () => {
               </span>
             </h1>
 
-            <p className="mt-8 max-w-md text-lg lg:text-xl text-foreground/70 leading-relaxed">
+            <p className="mt-7 max-w-md text-lg lg:text-xl text-foreground/75 leading-relaxed">
               Стабильные заказы для владельцев фур
-              <br />
+              <br className="hidden sm:block" />
               без поиска клиентов и бумаг
             </p>
 
-            <div className="mt-10">
+            <div className="mt-9 flex flex-wrap gap-3">
+              <LeadDialog
+                source="hero"
+                trigger={
+                  <Button
+                    size="lg"
+                    className="rounded-2xl bg-[hsl(var(--orda-green))] hover:bg-[hsl(var(--orda-green-deep))] text-[hsl(var(--orda-cream))] h-14 px-9 text-base font-semibold group shadow-lg shadow-[hsl(var(--orda-green))]/20"
+                  >
+                    Стать партнёром
+                    <Icon
+                      name="ArrowRight"
+                      size={18}
+                      className="ml-2 group-hover:translate-x-0.5 transition-transform"
+                    />
+                  </Button>
+                }
+              />
               <Button
+                asChild
                 size="lg"
-                className="rounded-2xl bg-[hsl(var(--orda-green))] hover:bg-[hsl(var(--orda-green-deep))] text-[hsl(var(--orda-cream))] h-14 px-9 text-base font-semibold group"
+                variant="outline"
+                className="rounded-2xl h-14 px-7 text-base font-semibold border-foreground/20 bg-background/60 backdrop-blur-sm hover:bg-foreground hover:text-background"
               >
-                Стать партнёром
-                <Icon
-                  name="ArrowRight"
-                  size={18}
-                  className="ml-2 group-hover:translate-x-0.5 transition-transform"
-                />
+                <a href="#economics">Посмотреть ставки</a>
               </Button>
+            </div>
+
+            <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl">
+              {[
+                { icon: "Truck", value: "270+", label: "заказчиков" },
+                { icon: "Wallet", value: "15", label: "дней до оплаты" },
+                { icon: "Fuel", value: "−20%", label: "на ДТ" },
+                { icon: "ShieldCheck", value: "0₽", label: "за вступление" },
+              ].map((s, i) => (
+                <div
+                  key={i}
+                  className="rounded-2xl bg-background/70 backdrop-blur-sm border border-border/60 p-4"
+                >
+                  <Icon
+                    name={s.icon}
+                    size={18}
+                    className="text-[hsl(var(--orda-green))]"
+                  />
+                  <div className="mt-2 font-heading font-bold text-2xl tracking-tight leading-none">
+                    {s.value}
+                  </div>
+                  <div className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">
+                    {s.label}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
-
-      {/* Marquee */}
-      <div className="overflow-hidden border-y border-border py-5 bg-[hsl(var(--orda-green))] text-[hsl(var(--orda-cream))]">
-        <div className="flex gap-12 animate-marquee whitespace-nowrap font-heading text-2xl md:text-3xl font-medium">
-          {[...Array(2)].map((_, i) => (
-            <div key={i} className="flex gap-12 items-center">
-              {["Реф 20т", "•", "Тент 20т", "•", "Изотерм", "•", "Мега-фура", "•", "Сцепка", "•", "Реф 20т", "•", "Тент 20т", "•", "Изотерм", "•", "Мега-фура", "•", "Сцепка", "•"].map(
-                (w, j) => (
-                  <span key={j} className={w === "•" ? "text-[hsl(var(--orda-orange))]" : ""}>
-                    {w}
-                  </span>
-                ),
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
     </>
   );
 };

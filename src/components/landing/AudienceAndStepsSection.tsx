@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
 import { Button } from "@/components/ui/button";
+import LeadDialog from "@/components/landing/LeadDialog";
 
 const audience = [
   {
@@ -74,13 +75,18 @@ const AudienceAndStepsSection = () => {
           </div>
 
           <div className="mt-8">
-            <Button
-              variant="ghost"
-              className="rounded-2xl bg-white border border-border hover:bg-foreground hover:text-background h-14 px-7 font-medium text-base"
-            >
-              Проверить, подхожу ли я
-              <Icon name="ArrowRight" size={16} className="ml-2" />
-            </Button>
+            <LeadDialog
+              source="audience"
+              trigger={
+                <Button
+                  variant="ghost"
+                  className="rounded-2xl bg-white border border-border hover:bg-foreground hover:text-background h-14 px-7 font-medium text-base"
+                >
+                  Проверить, подхожу ли я
+                  <Icon name="ArrowRight" size={16} className="ml-2" />
+                </Button>
+              }
+            />
           </div>
         </div>
       </section>
